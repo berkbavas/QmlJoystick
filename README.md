@@ -1,4 +1,4 @@
-# Qml Joystick
+# QML Joystick
 A custom fancy joystick written with `QML`.
 
 ## Build
