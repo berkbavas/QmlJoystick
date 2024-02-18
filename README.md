@@ -1,5 +1,8 @@
 # Qml Joystick
-Customizable joystick written with QML.
+A Custom fancy joystick written with `QML`.
+
+## Build
+1) Install `Qt 5.15.2`.
+2) Open `QmlJoystick.pro` with `QtCreator` and build & run it. 
 
 ## Screenshot
-![QML Joystick](Screenshots/GIF_11.01.2022_21-47-24.gif)

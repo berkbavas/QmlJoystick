@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
+
 Item {
     property double radius: 230
     property string color: "#34393f"
@@ -78,4 +79,3 @@ Item {
         }
     }
 }
-

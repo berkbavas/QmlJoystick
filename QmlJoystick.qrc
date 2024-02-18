@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
+        <file>Main.qml</file>
         <file>Joystick.qml</file>
         <file>Back.qml</file>
         <file>Groove.qml</file>

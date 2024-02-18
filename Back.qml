@@ -34,4 +34,3 @@ Canvas {
         samples: 32
     }
 }
-
