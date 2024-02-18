@@ -1,5 +1,5 @@
 # Qml Joystick
-A Custom fancy joystick written with `QML`.
+A custom fancy joystick written with `QML`.
 
 ## Build
 1) Install `Qt 5.15.2`.
