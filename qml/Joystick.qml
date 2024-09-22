@@ -5,32 +5,41 @@ Item {
     width: 1340
     height: 1340
 
-    property string color: "#34393f"
+    property double scaleRatio: 1
+    property string color: "#22262a"
     property bool pressedOnHandle: false
     property double axisX: 0
     property double axisY: 0
     property double theta: 0
     property double radius: 0
-    readonly property double maxRadius: 275
+    readonly property double maxRadius: 275 * scaleRatio
 
     function update() {
-        theta = Math.atan2(axisY, axisX)
-
-        handle.x = 440 + maxRadius * axisX
-        handle.y = 440 - maxRadius * axisY
+        handle.x = 440 * scaleRatio + maxRadius * axisX
+        handle.y = 440 * scaleRatio - maxRadius * axisY
 
         for (var i = 0; i < lights.lights.count; i++) {
             var tempTheta = -theta
 
-            if(tempTheta < 0)
+            if (tempTheta < 0)
                 tempTheta += 2 * Math.PI
 
             var angleBetween = Math.abs(tempTheta - lights.lights.itemAt(i).angle)
 
-            lights.lights.itemAt(i).lightOn = (angleBetween < Math.PI / 4 ||  angleBetween > 2 * Math.PI - Math.PI / 4)
+            lights.lights.itemAt(i).lightOn = (angleBetween < Math.PI / 6 || angleBetween > 2 * Math.PI - Math.PI / 6)
             lights.lights.itemAt(i).lightBrightness = Math.min(axisX * axisX + axisY * axisY, 1)
         }
     }
+
+    function reset() {
+        axisX = 0
+        axisY = 0
+        theta = 0
+        pressedOnHandle = false
+        root.update()
+    }
+
+    onScaleRatioChanged: reset()
 
     Item {
         id: center
@@ -39,27 +48,31 @@ Item {
     }
 
     Back {
-        x: 158
-        y: 158
+        x: 158 * scaleRatio
+        y: 158 * scaleRatio
+        radius: 512 * scaleRatio
         color: root.color
     }
 
     Groove {
-        x: 314
-        y: 314
+        x: 314 * scaleRatio
+        y: 314 * scaleRatio
+        radius: 356 * scaleRatio
         color: root.color
     }
 
     Lights {
         id: lights
-        x: 10
-        y: 10
+        x: 10 * scaleRatio
+        y: 10 * scaleRatio
+        radius: 660 * scaleRatio
     }
 
     Handle {
         id: handle
-        x: 440
-        y: 440
+        x: 440 * scaleRatio
+        y: 440 * scaleRatio
+        radius: 230 * scaleRatio
         color: root.color
 
         Item {
@@ -75,21 +88,19 @@ Item {
             pressedOnHandle = point.x * point.x + point.y * point.y < handle.radius * handle.radius
         }
 
-        onReleased: {
-            handle.x = 440
-            handle.y = 440
-            axisX = 0
-            axisY = 0
-            theta = 0
-            pressedOnHandle = false
-            root.update()
-        }
+        onReleased: reset()
 
         onPositionChanged: {
             if (pressedOnHandle) {
                 var point = mapToItem(center, mouseX, mouseY)
-                axisX =  Math.max(-1, Math.min(point.x / maxRadius, 1))
-                axisY = -Math.max(-1, Math.min(point.y / maxRadius, 1))
+                var length = Math.sqrt(point.x * point.x + point.y * point.y)
+                if (length > maxRadius)
+                    length = maxRadius
+
+                theta = Math.atan2(-point.y, point.x)
+
+                axisX = length * Math.cos(theta) / maxRadius
+                axisY = length * Math.sin(theta) / maxRadius
 
                 root.update()
             }

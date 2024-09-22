@@ -12,21 +12,24 @@ Canvas {
     smooth: true
     contextType: '2d'
     onPaint: {
-        if(context)
-        {
+        if (context) {
             context.reset()
-            context.beginPath();
-            context.arc(radius, radius, 508 / 512 * radius, 0, 2 * Math.PI);
-            context.fillStyle = root.color
-            context.fill();
+            context.beginPath()
+            context.arc(radius, radius, 0.99 * radius, 0, 2 * Math.PI)
+
+            var gradient = context.createLinearGradient(0, 0, width, height)
+            gradient.addColorStop(0, Qt.darker(root.color, 1.25))
+            gradient.addColorStop(1, Qt.lighter(root.color, 1.25))
+
+            context.fillStyle = gradient
+            context.fill()
         }
     }
 
-    layer.enabled: true
+    layer.enabled: false
     layer.effect: InnerShadow {
         color: "#80000000"
         radius: 64 / 512 * root.radius
         samples: 32
     }
 }
-

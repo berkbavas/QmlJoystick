@@ -12,11 +12,10 @@ Canvas {
     smooth: true
     contextType: '2d'
     onPaint: {
-        if(context)
-        {
+        if (context) {
             context.reset()
             context.beginPath()
-            context.arc(radius, radius, 350 / 356 * radius, 0, 2 * Math.PI);
+            context.arc(radius, radius, 0.98 * radius, 0, 2 * Math.PI)
             context.fillStyle = root.color
             context.fill()
             context.strokeStyle = Qt.lighter(root.color, 1.25)
@@ -26,8 +25,7 @@ Canvas {
     }
 
     layer.enabled: true
-    layer.effect:
-        DropShadow {
+    layer.effect: DropShadow {
         color: "#40000000"
         horizontalOffset: 24 / 356 * root.radius
         verticalOffset: 24 / 356 * root.radius
