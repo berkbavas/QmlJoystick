@@ -1,6 +1,6 @@
 QT += quick
 
 SOURCES += \
-        src/Main.cpp
+        Source/Main.cpp
 
 RESOURCES += QmlJoystick.qrc

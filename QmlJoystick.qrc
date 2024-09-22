@@ -1,11 +1,11 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml/Back.qml</file>
-        <file>qml/Groove.qml</file>
-        <file>qml/Handle.qml</file>
-        <file>qml/Joystick.qml</file>
-        <file>qml/Lights.qml</file>
-        <file>qml/Main.qml</file>
-        <file>qml/SparseLight.qml</file>
+        <file>Qml/Back.qml</file>
+        <file>Qml/Groove.qml</file>
+        <file>Qml/Handle.qml</file>
+        <file>Qml/Joystick.qml</file>
+        <file>Qml/Lights.qml</file>
+        <file>Qml/Main.qml</file>
+        <file>Qml/SparseLight.qml</file>
     </qresource>
 </RCC>
