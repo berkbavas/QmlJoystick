@@ -17,7 +17,7 @@ Canvas {
             context.beginPath()
             context.arc(radius, radius, 0.99 * radius, 0, 2 * Math.PI)
 
-            var gradient = context.createLinearGradient(0, 0, width, height)
+            let gradient = context.createLinearGradient(0, 0, width, height)
             gradient.addColorStop(0, Qt.darker(root.color, 1.25))
             gradient.addColorStop(1, Qt.lighter(root.color, 1.25))
 

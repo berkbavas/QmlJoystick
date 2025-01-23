@@ -47,7 +47,7 @@ Item {
                 context.lineWidth = 6 / 230 * radius
                 context.lineJoin = "round"
 
-                for (var i = 0; i < 4; i++) {
+                for (let i = 0; i < 4; i++) {
                     context.translate(radius, radius)
                     context.rotate(i * Math.PI / 2)
                     context.translate(-radius, -radius)

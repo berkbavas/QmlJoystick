@@ -18,13 +18,13 @@ Item {
         handle.x = 440 * scaleRatio + maxRadius * axisX
         handle.y = 440 * scaleRatio - maxRadius * axisY
 
-        for (var i = 0; i < lights.lights.count; i++) {
-            var tempTheta = -theta
+        for (let i = 0; i < lights.lights.count; i++) {
+            let tempTheta = -theta
 
             if (tempTheta < 0)
                 tempTheta += 2 * Math.PI
 
-            var angleBetween = Math.abs(tempTheta - lights.lights.itemAt(i).angle)
+            let angleBetween = Math.abs(tempTheta - lights.lights.itemAt(i).angle)
 
             lights.lights.itemAt(i).lightOn = (angleBetween < Math.PI / 6 || angleBetween > 2 * Math.PI - Math.PI / 6)
             lights.lights.itemAt(i).lightBrightness = Math.min(axisX * axisX + axisY * axisY, 1)
@@ -84,7 +84,7 @@ Item {
     MouseArea {
         anchors.fill: parent
         onPressed: {
-            var point = mapToItem(handleCenter, mouseX, mouseY)
+            let point = mapToItem(handleCenter, mouseX, mouseY)
             pressedOnHandle = point.x * point.x + point.y * point.y < handle.radius * handle.radius
         }
 
@@ -92,8 +92,8 @@ Item {
 
         onPositionChanged: {
             if (pressedOnHandle) {
-                var point = mapToItem(center, mouseX, mouseY)
-                var length = Math.sqrt(point.x * point.x + point.y * point.y)
+                let point = mapToItem(center, mouseX, mouseY)
+                let length = Math.sqrt(point.x * point.x + point.y * point.y)
                 if (length > maxRadius)
                     length = maxRadius
 
