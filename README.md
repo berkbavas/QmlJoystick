@@ -1,9 +1,6 @@
-
 # QmlJoystick
 
 A customizable joystick UI component written in **QML**.
-
----
 
 ## Overview
 
@@ -26,25 +23,6 @@ It is ideal for touch interfaces, games, or any application requiring a virtual 
 ## Demo Video
 
 [Watch the demo](https://github.com/user-attachments/assets/61f210fe-0a5b-4191-b154-83180739b8d2)
-
-## Project Structure
-
-```text
-QmlJoystick/
-├── Qml/           # QML components
-│   ├── Back.qml
-│   ├── Groove.qml
-│   ├── Handle.qml
-│   ├── Joystick.qml
-│   ├── Lights.qml
-│   ├── Main.qml
-│   └── SparseLight.qml
-├── Source/        # C++ entry point
-│   └── Main.cpp
-├── QmlJoystick.pro
-├── QmlJoystick.qrc
-└── README.md
-```
 
 ## Keywords
 
